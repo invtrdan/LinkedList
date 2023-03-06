@@ -66,7 +66,16 @@ class LinkedList:
         for val in values:
             self.insert_at_end(val)
 
-
+    def get_length(self):
+        '''
+        Returns the length of the Linked List
+        '''
+        count = 0
+        itr = self.head
+        while itr:
+            count += 1
+            itr = itr.next
+        return count
 
 if __name__ == '__main__':
     #####################################################################################################
@@ -75,6 +84,7 @@ if __name__ == '__main__':
     ll1 = LinkedList() # Create Linked List 1
     ll2 = LinkedList() # Create Linked List 2
     ll3 = LinkedList() # Create Linked List 3
+    ll4 = LinkedList() # Create Linked List 4
     
     # Test creating an empty Linked List
     assert ll1.print_linked_list() == None, 'print_linked_list fails for empty Linked List'
@@ -98,11 +108,15 @@ if __name__ == '__main__':
     assert ll2.print_linked_list() == 'A-->None', 'either print_linked_list or insert_at_start fails for inserting to the end of an empty linked list'
 
     # Test creating a new Linked List from a list of values
-    print("\nCreate a new Linked List from a list (['Jeanette', 'Camille', 'Danielle'])")
+    print("\nCreate a new Linked List (Linked List 3) from a list (['Jeanette', 'Camille', 'Danielle'])")
     values = ['Jeanette', 'Camille', 'Danielle']
     ll3.create_new_linked_list(values)
     assert ll3.print_linked_list() == 'Jeanette-->Camille-->Danielle-->None', 'either print_linked_list or create_new_linked_list fails'
 
+    # Testing get_length()
+    print('The length of Linked List 3 is:', ll3.get_length())
+    assert ll4.get_length() == 0, 'get_length() does not work on an empty Linked List' # Testing get_length() on an empty Linked List
+    assert ll3.get_length() == 3, 'get_length() does not work'
 
     print('\nAll tests pass :)' + '\n')
     #####################################################################################################

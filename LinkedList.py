@@ -24,17 +24,31 @@ class LinkedList:
             linked_list_string += str(itr.data) + '-->'
             itr = itr.next
         linked_list_string += 'None'
-        
+
         print(linked_list_string)
+        return linked_list_string
 
     def insert_at_start(self, data):
         '''
-        Inserts a Node (node) at the start of the Linked List
-        The next pointer points to the previous head of the Linked List
-        The head pointer points to the new node
+        Inserts a new Node at the start of the Linked List
         '''
         node = Node(data, self.head)
         self.head = node
 
 if __name__ == '__main__':
-    pass
+    #####################################################################################################
+    #                                              Testing                                              #
+    #####################################################################################################
+    ll1 = LinkedList() # Create Linked List 1
+    assert ll1.print_linked_list() == None, 'print_linked_list fails for empty Linked List'
+
+    print('\nAdd 2 to the start of the Linked List')
+    ll1.insert_at_start(2)
+    assert ll1.print_linked_list() == '2-->None', 'either print_linked_list or insert_at_start fails for Linked List with one Node'
+
+    print('\nAdd 1 to the start of the Linked List')
+    ll1.insert_at_start(1)
+    assert ll1.print_linked_list() == '1-->2-->None', 'either print_linked_list or insert_at_start fails for Linked List with two Nodes'
+
+    print('\nAll tests pass :)' + '\n')
+    #####################################################################################################

@@ -67,26 +67,26 @@ if __name__ == '__main__':
     ll1 = LinkedList() # Create Linked List 1
     ll2 = LinkedList() # Create Linked List 2
     
-    # Test Creating an Empty Linked List
+    # Test creating an empty Linked List
     assert ll1.print_linked_list() == None, 'print_linked_list fails for empty Linked List'
 
-    # Test adding to the start of a Linked List
-    print('\nAdd 2 to the start of Linked List 1') # Adding to the start of an empty Linked List
+    # Test inserting at the start of a Linked List
+    print('\nInsert 2 at the start of Linked List 1') # Inserting at the start of an empty Linked List
     ll1.insert_at_start(2)
-    assert ll1.print_linked_list() == '2-->None', 'either print_linked_list or insert_at_start fails for Linked List with one Node'
+    assert ll1.print_linked_list() == '2-->None', 'either print_linked_list or insert_at_start fails for inserting at the start of an empty Linked List'
 
-    print('\nAdd 1 to the start of Linked List 1')
+    print('\nInsert 1 at the start of Linked List 1')
     ll1.insert_at_start(1)
-    assert ll1.print_linked_list() == '1-->2-->None', 'either print_linked_list or insert_at_start fails for Linked List with two Nodes'
+    assert ll1.print_linked_list() == '1-->2-->None', 'either print_linked_list or insert_at_start fails for inserting at the start of a Linked List'
 
-    # Test adding to the end of a Linked List
+    # Test inserting at the end of a Linked List
     print('\nInsert 3 at the end of Linked List 1')
     ll1.insert_at_end(3)
-    assert ll1.print_linked_list() == '1-->2-->3-->None', 'either print_linked_list or insert_at_start fails for Linked List with three Nodes'
+    assert ll1.print_linked_list() == '1-->2-->3-->None', 'either print_linked_list or insert_at_start fails for inserting at the end of a Linked List'
 
-    print('\nInsert A at the end of Linked List 2') # Adding to the end of an empty Linked List
+    print('\nInsert A at the end of Linked List 2') # Inserting the end of an empty Linked List
     ll2.insert_at_end('A')
-    assert ll2.print_linked_list() == 'A-->None'
+    assert ll2.print_linked_list() == 'A-->None', 'either print_linked_list or insert_at_start fails for inserting to the end of an empty linked list'
 
     print('\nAll tests pass :)' + '\n')
     #####################################################################################################

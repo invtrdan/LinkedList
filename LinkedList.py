@@ -58,6 +58,14 @@ class LinkedList:
             itr = itr.next
         itr.next = Node(data, None)
 
+    def create_new_linked_list(self, values):
+        '''
+        Takes a list of values, creates a new Linked List
+        '''
+        self.head = None
+        for val in values:
+            self.insert_at_end(val)
+
 
 
 if __name__ == '__main__':
@@ -66,6 +74,7 @@ if __name__ == '__main__':
     #####################################################################################################
     ll1 = LinkedList() # Create Linked List 1
     ll2 = LinkedList() # Create Linked List 2
+    ll3 = LinkedList() # Create Linked List 3
     
     # Test creating an empty Linked List
     assert ll1.print_linked_list() == None, 'print_linked_list fails for empty Linked List'
@@ -87,6 +96,13 @@ if __name__ == '__main__':
     print('\nInsert A at the end of Linked List 2') # Inserting the end of an empty Linked List
     ll2.insert_at_end('A')
     assert ll2.print_linked_list() == 'A-->None', 'either print_linked_list or insert_at_start fails for inserting to the end of an empty linked list'
+
+    # Test creating a new Linked List from a list of values
+    print("\nCreate a new Linked List from a list (['Jeanette', 'Camille', 'Danielle'])")
+    values = ['Jeanette', 'Camille', 'Danielle']
+    ll3.create_new_linked_list(values)
+    assert ll3.print_linked_list() == 'Jeanette-->Camille-->Danielle-->None', 'either print_linked_list or create_new_linked_list fails'
+
 
     print('\nAll tests pass :)' + '\n')
     #####################################################################################################

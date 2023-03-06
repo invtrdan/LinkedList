@@ -10,8 +10,22 @@ class LinkedList:
     def __init__(self):
         self.head = None
     
-    def print(self):
-        # 
+    def print_linked_list(self):
+        '''
+        Prints a representation of the Linked List.
+        '''
+        if self.head is None: # If the Linked List is empty
+            print('The Linked List is empty.')
+            return
+
+        itr = self.head # Assign the head to an iterator variable (itr)
+        linked_list_string = ''
+        while itr:
+            linked_list_string += str(itr.data) + '-->'
+            itr = itr.next
+        linked_list_string += 'None'
+        
+        print(linked_list_string)
 
     def insert_at_start(self, data):
         '''

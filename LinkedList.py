@@ -116,6 +116,35 @@ class LinkedList:
                 break
             itr = itr.next
             count += 1
+    
+    def remove_all(self, value):
+        '''
+        Removes all occurences of value from the Linked List.
+        Returns the new head of the Linked List.
+        '''
+        if self.head is None:
+            return 'The Linked List is empty.'
+        itr = self.head
+        while itr:
+            if itr == self.head and itr.data == value: # If the value is at the head of the Linked List
+                if itr.next == None: #If there is only one Node in theh Linked List
+                    self.head = None
+                    return self.head
+                itr = itr.next
+                self.head = itr
+            else:
+                if itr.data != value:
+                    prev = itr
+                    itr = prev.next
+                if itr == None: # If we are at the end of the Linked List
+                    return self.head
+                if itr.data == value:
+                    prev.next = itr.next
+                    itr = itr.next
+                    
+
+                    
+
 
 
 if __name__ == '__main__':
@@ -126,6 +155,7 @@ if __name__ == '__main__':
     ll2 = LinkedList() # Create Linked List 2
     ll3 = LinkedList() # Create Linked List 3
     ll4 = LinkedList() # Create Linked List 4
+    ll5 = LinkedList() # Create Linked Lost 5
     
     # Test creating an empty Linked List
     assert ll1.print_linked_list() == None, 'print_linked_list fails for empty Linked List'
@@ -188,7 +218,20 @@ if __name__ == '__main__':
     ll3.insert_at_index(1,'Camille')
     print('after:')
     ll3.print_linked_list()
-    # assert ll3.print_linked_list() == 'Jeanette-->Camille-->Danielle-->None', 'insert_at_index() does not work as expected.'
+    assert ll3.print_linked_list() == 'Jeanette-->Camille-->Danielle-->None', 'insert_at_index() does not work as expected.'
+
+    # Test remove_all()
+    print('\nTesting removing all of the occurences of a value from the Linked List.')
+    lst = [1,3,2,3,5]
+    value = 1
+    ll5.create_new_linked_list(lst)
+    print('before:')
+    ll5.print_linked_list()
+    print('value:', value)
+    ll5.remove_all(value)
+    print('after:')
+    ll5.print_linked_list()
+
 
     print('\nAll tests pass :)' + '\n')
     #####################################################################################################

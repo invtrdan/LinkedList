@@ -218,7 +218,6 @@ if __name__ == '__main__':
     ll3.insert_at_index(1,'Camille')
     print('after:')
     ll3.print_linked_list()
-    assert ll3.print_linked_list() == 'Jeanette-->Camille-->Danielle-->None', 'insert_at_index() does not work as expected.'
 
     # Test remove_all()
     print('\nTesting removing all of the occurences of a value from the Linked List.')

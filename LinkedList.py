@@ -147,11 +147,32 @@ class LinkedList:
         '''
         length = self.get_length()
         if length == 0:
-            return 'The Linked List is Empty'
+            return 'The Linked List is empty.'
         index = length - n
         print('index:',index)
         self.delete_index(index)
     
+    def rotate(self, dist):
+        '''
+        Rotates the Linked List to the right by dist steps.
+        If dist is negative, the Linked List should be rotated to the left.
+        '''
+        if dist == 0:
+            return
+        if self.head == None or self.head.next == None or dist == 0:
+            return 
+        count, tail = 1, self.head
+        while tail.next:
+            tail = tail.next
+            count += 1
+        dist = dist % count
+        tail2 = self.head
+        for i in range(count-dist-1):
+            tail2 = tail2.next
+        head2 = tail2.next
+        tail2.next = None
+        tail.next = self.head
+        self.head = head2
 
                     
 
@@ -253,6 +274,15 @@ if __name__ == '__main__':
     ll6.remove_nth_from_end(n)
     print('after:')
     ll6.print_linked_list()
+
+    # Test rotate()
+    print('\nTest rotate')
+    print('before:')
+    ll6.print_linked_list()
+    ll6.rotate(1)
+    print('after:')
+    ll6.print_linked_list()
+
 
 
     print('\nAll tests pass :)' + '\n')

@@ -77,6 +77,25 @@ class LinkedList:
             itr = itr.next
         return count
 
+    def delete_index(self, index):
+        '''
+        Removes the element at the particular index
+        '''
+        if index < 0 or index >= self.get_length(): # Validate that index
+            raise Exception('Invalid Index')
+        if index == 0: # Remove the head
+            self.head = self.head.next
+            return
+
+        count = 0
+        itr = self.head
+        while itr:
+            if count == index - 1:
+                itr.next = itr.next.next
+                break
+            itr = itr.next
+            count += 1
+
 if __name__ == '__main__':
     #####################################################################################################
     #                                              Testing                                              #
@@ -117,6 +136,28 @@ if __name__ == '__main__':
     print('The length of Linked List 3 is:', ll3.get_length())
     assert ll4.get_length() == 0, 'get_length() does not work on an empty Linked List' # Testing get_length() on an empty Linked List
     assert ll3.get_length() == 3, 'get_length() does not work'
+
+    #Test delete_index()
+    print('\nDeleting the element at the head of a Linked List (Linked List 1)')
+    print('before:')
+    ll1.print_linked_list()
+    ll1.delete_index(0)
+    print('after:')
+    assert ll1.print_linked_list() == '2-->3-->None', 'delete_index() does not work as expected when deleting the head of a Linked List.'
+
+    print('\nDeleting the element at the end of a Linked List (Linked List 1)')
+    print('before:')
+    ll1.print_linked_list()
+    ll1.delete_index(1)
+    print('after:')
+    assert ll1.print_linked_list() == '2-->None', 'delete_index() does not work as expected when deleting the end of a Linked List.'
+
+    print('\nDeleting an element in a Linked List (Linked List 3)')
+    print('before:')
+    ll3.print_linked_list()
+    ll3.delete_index(1)
+    print('after:')
+    assert ll3.print_linked_list() == 'Jeanette-->Danielle-->None', 'delete_index() does not work as expected when deleting an element in a Linked List.'
 
     print('\nAll tests pass :)' + '\n')
     #####################################################################################################

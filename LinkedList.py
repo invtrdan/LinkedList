@@ -14,6 +14,7 @@ class LinkedList:
     def print_linked_list(self):
         '''
         Prints a representation of the Linked List.
+        Time Complexity: O(n)
         '''
         if self.head is None: # If the Linked List is empty
             print('The Linked List is empty.')
@@ -40,6 +41,25 @@ class LinkedList:
         '''
         node = Node(data, self.head)
         self.head = node
+    
+    def insert_at_index(self, index, data):
+        '''
+        Inserts a node with data at a specific index location.
+        '''
+        if index < 0 or index >= self.get_length(): # Validate the index
+            raise Exception('Invalid Index')
+        if index == 0:
+            self.insert_at_start(data)
+            return
+        count = 0
+        itr = self.head
+        while itr:
+            if count == index - 1:
+                node = Node(data, itr.next)
+                itr.next = node
+                break
+            itr = itr.next
+            count += 1
 
     def insert_at_end(self, data):
         '''
@@ -80,8 +100,9 @@ class LinkedList:
     def delete_index(self, index):
         '''
         Removes the element at the particular index
+        Time Complexity: O(n) (worst case) 
         '''
-        if index < 0 or index >= self.get_length(): # Validate that index
+        if index < 0 or index >= self.get_length(): # Validate the index
             raise Exception('Invalid Index')
         if index == 0: # Remove the head
             self.head = self.head.next
@@ -95,6 +116,7 @@ class LinkedList:
                 break
             itr = itr.next
             count += 1
+
 
 if __name__ == '__main__':
     #####################################################################################################
@@ -158,6 +180,15 @@ if __name__ == '__main__':
     ll3.delete_index(1)
     print('after:')
     assert ll3.print_linked_list() == 'Jeanette-->Danielle-->None', 'delete_index() does not work as expected when deleting an element in a Linked List.'
+
+    # Test insert_at_index()
+    print('\nInserting an element at index 1 (Linked List 3)')
+    print('before:')
+    ll3.print_linked_list()
+    ll3.insert_at_index(1,'Camille')
+    print('after:')
+    ll3.print_linked_list()
+    # assert ll3.print_linked_list() == 'Jeanette-->Camille-->Danielle-->None', 'insert_at_index() does not work as expected.'
 
     print('\nAll tests pass :)' + '\n')
     #####################################################################################################

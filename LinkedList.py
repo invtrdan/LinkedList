@@ -138,9 +138,17 @@ class LinkedList:
                     itr = prev.next
                 if itr == None: # If we are at the end of the Linked List
                     return self.head
-                if itr.data == value:
-                    prev.next = itr.next
-                    itr = itr.next
+                prev.next = itr.next
+                itr = itr.next
+    
+    def remove_nth_from_end(self, n):
+        '''
+        Removes the element at the nth index from the end of the Linked List
+        '''
+        length = self.get_length()
+        index = length - n
+        print('index:',index)
+        self.delete_index(index)
                     
 
                     
@@ -155,7 +163,8 @@ if __name__ == '__main__':
     ll2 = LinkedList() # Create Linked List 2
     ll3 = LinkedList() # Create Linked List 3
     ll4 = LinkedList() # Create Linked List 4
-    ll5 = LinkedList() # Create Linked Lost 5
+    ll5 = LinkedList() # Create Linked List 5
+    ll6 = LinkedList() # Create Linked List 6
     
     # Test creating an empty Linked List
     assert ll1.print_linked_list() == None, 'print_linked_list fails for empty Linked List'
@@ -230,6 +239,18 @@ if __name__ == '__main__':
     ll5.remove_all(value)
     print('after:')
     ll5.print_linked_list()
+
+    # Test remove_nth_from_end()
+    print('\nTesting removing the nth index from the end.')
+    lst = [1,2,3,4,5,6]
+    n = 1
+    ll6.create_new_linked_list(lst)
+    print('before:')
+    ll6.print_linked_list()
+    print('nth index from the end:', n)
+    ll6.remove_nth_from_end(n)
+    print('after:')
+    ll6.print_linked_list()
 
 
     print('\nAll tests pass :)' + '\n')

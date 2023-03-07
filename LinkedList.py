@@ -146,10 +146,12 @@ class LinkedList:
         Removes the element at the nth index from the end of the Linked List
         '''
         length = self.get_length()
+        if length == 0:
+            return 'The Linked List is Empty'
         index = length - n
         print('index:',index)
         self.delete_index(index)
-                    
+    
 
                     
 
@@ -230,7 +232,7 @@ if __name__ == '__main__':
 
     # Test remove_all()
     print('\nTesting removing all of the occurences of a value from the Linked List.')
-    lst = [1,3,2,3,5]
+    lst = [1,1,1,1,1,1]
     value = 1
     ll5.create_new_linked_list(lst)
     print('before:')

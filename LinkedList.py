@@ -177,14 +177,17 @@ class LinkedList:
     def insert_sorted(self, value):
         '''
         Assuming that the Linked List (starting at head) is in sorted ascending order, 
-        insert value such that the list stays in sorted order.
+        insert value such that the Linked List stays in sorted order.
         '''
         itr = self.head
         while itr:
+            if itr.next is None:
+                itr.next = Node(value, None)
+                break
             if itr.data < value and value < itr.next.data:
                 node = Node(value, itr.next)
                 itr.next = node 
-                return
+                break
             itr = itr.next
                 
                     
@@ -300,7 +303,7 @@ if __name__ == '__main__':
     # Test insert_sorted()
     print('\nTest insert_sorted()')
     lst = [1,2,3,5,6]
-    value = 4
+    value = 7
     ll7.create_new_linked_list(lst)
     print('before:')
     ll7.print_linked_list()

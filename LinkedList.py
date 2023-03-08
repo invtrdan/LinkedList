@@ -174,6 +174,19 @@ class LinkedList:
         tail.next = self.head
         self.head = head2
 
+    def insert_sorted(self, value):
+        '''
+        Assuming that the Linked List (starting at head) is in sorted ascending order, 
+        insert value such that the list stays in sorted order.
+        '''
+        itr = self.head
+        while itr:
+            if itr.data < value and value < itr.next.data:
+                node = Node(value, itr.next)
+                itr.next = node 
+                return
+            itr = itr.next
+                
                     
 
 
@@ -188,6 +201,7 @@ if __name__ == '__main__':
     ll4 = LinkedList() # Create Linked List 4
     ll5 = LinkedList() # Create Linked List 5
     ll6 = LinkedList() # Create Linked List 6
+    ll7 = LinkedList() # Create Linked List 7
     
     # Test creating an empty Linked List
     assert ll1.print_linked_list() == None, 'print_linked_list fails for empty Linked List'
@@ -283,7 +297,16 @@ if __name__ == '__main__':
     print('after:')
     ll6.print_linked_list()
 
-
+    # Test insert_sorted()
+    print('\nTest insert_sorted()')
+    lst = [1,2,3,5,6]
+    value = 4
+    ll7.create_new_linked_list(lst)
+    print('before:')
+    ll7.print_linked_list()
+    ll7.insert_sorted(value)
+    print('after:')
+    ll7.print_linked_list()
 
     print('\nAll tests pass :)' + '\n')
     #####################################################################################################

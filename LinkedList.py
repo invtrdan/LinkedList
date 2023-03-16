@@ -4,9 +4,24 @@ class Node:
     Parameters: data, next
     '''
     def __init__(self, data=None, next=None):
+        '''
+        Linked List Node constructor
+        Has the node's value (data) and a pointer to the next node (next)
+        '''
         self.data = data 
         self.next = next 
-
+    def __str__(self):
+        '''
+        String representation of the object.
+        '''
+        temp = self
+        result = []
+        while temp != None:
+            result.append(str(temp.data))
+            temp = temp.next
+        result.append(str(None))
+        return "-->".join(result)
+    
 class LinkedList:
     def __init__(self):
         self.head = None
